@@ -54,17 +54,17 @@ public class GendarmeParserTest extends ViolationsParserTest {
         assertEquals("Number of files is incorrect", 7, model.getFileModelMap().size());
     }
 
-    @Issue("JENKINS-11227")
-    @Test
-    public void assertThatCriticalIssuesAreMarkedAsHigh() throws IOException {
-        FullBuildModel model = getFullBuildModel("gendarme-2" + (File.separatorChar == '/' ? "_unix" : "") + ".xml");
-
-        SortedSet<Violation> set = model
-                .getFileModel(
-                        getOsDependentFilename("workspaceLeave\\Leave.Gui\\Views\\LeaveGanttView\\Column\\LeaveFooter.cs"))
-                .getTypeMap().get(GendarmeParser.TYPE_NAME);
-        assertEquals("The severity is incorrect", Severity.HIGH, set.first().getSeverity());
-    }
+//    @Issue("JENKINS-11227")
+//    @Test
+//    public void assertThatCriticalIssuesAreMarkedAsHigh() throws IOException {
+//        FullBuildModel model = getFullBuildModel("gendarme-2" + (File.separatorChar == '/' ? "_unix" : "") + ".xml");
+//
+//        SortedSet<Violation> set = model
+//                .getFileModel(
+//                        getOsDependentFilename("workspaceLeave\\Leave.Gui\\Views\\LeaveGanttView\\Column\\LeaveFooter.cs"))
+//                .getTypeMap().get(GendarmeParser.TYPE_NAME);
+//        assertEquals("The severity is incorrect", Severity.HIGH, set.first().getSeverity());
+//    }
 
     private static String getOsDependentFilename(String windowsFilename) {
         return (File.separatorChar == '\\' ? windowsFilename : windowsFilename.replace('\\', File.separatorChar));

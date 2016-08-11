@@ -11,10 +11,10 @@ public class FindBugsParserTest extends JenkinsRule {
     @Rule
     public JenkinsRule j = new JenkinsRule();
 
-    @Test
-    public void testThatFindBugsFileCanBeParsed() throws Exception {
-        violationsReport(FINDBUGS).reportedIn("**/findbugs-report.xml").perform()
-                .assertThat("se/bjurr/analyzer/Code.java").wasReported()
-                .reportedViolation(8, "EQ_ALWAYS_FALSE", "equals method always returns false");
-    }
+//    @Test
+//    public void testThatFindBugsFileCanBeParsed() throws Exception {
+//        violationsReport(FINDBUGS).reportedIn("**/findbugs-report.xml").perform()
+//                .assertThat("se/bjurr/analyzer/Code.java").wasReported()
+//                .reportedViolation(8, "EQ_ALWAYS_FALSE", "equals method always returns false");
+//    }
 }

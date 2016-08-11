@@ -13,13 +13,24 @@ public class AbsoluteFileFinder {
 	private transient List<String> sourcePaths = new ArrayList<String>();
 
 	public void addSourcePath(String path) {
-		sourcePaths.add(path);
+            sourcePaths.add(path);
+            if (!path.regionMatches(1, ":\\", 0, 2)) {
+                return;
+            }
+
+            String drive = path.substring(0, 3);
+            
+            if (sourcePaths.contains(drive)) {
+                return;
+            }
+
+            sourcePaths.add(drive);
 	}
 	
 	public void addSourcePaths(String[] paths) {
-		for (String path : paths) {
-			sourcePaths.add(path);
-		}
+            for (String path : paths) {
+                addSourcePath(path);
+            }
 	}
 
     public File getFileForName(String name) {
